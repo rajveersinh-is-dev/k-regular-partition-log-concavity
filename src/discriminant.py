@@ -2,7 +2,7 @@
 Exact calculation and structural decomposition of log-concavity discriminants.
 """
 
-from typing import List, Tuple, Dict
+from typing import List, Dict
 
 
 def compute_Delta(p_table: List[int]) -> List[int]:
