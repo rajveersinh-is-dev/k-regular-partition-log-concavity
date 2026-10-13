@@ -3,7 +3,7 @@ Core algorithms for partition numbers and k-regular partitions.
 All values are computed dynamically from first principles without precomputed lookup tables.
 """
 
-from typing import List, Tuple
+from typing import List
 
 
 def generalized_pentagonal_number(j: int) -> int:
