@@ -2,9 +2,10 @@
 Analysis of the log-concavity phase-transition boundary and exception thresholds.
 """
 
-from typing import List, Dict, Set
-from .partition import compute_partitions_euler, compute_pk_recurrence
+from typing import List, Dict
+
 from .discriminant import compute_Delta, compute_Dk, boundary_penalty_Theta
+from .partition import compute_partitions_euler, compute_pk_recurrence
 
 
 def find_exceptions(Dk: List[int], max_n: int = None) -> List[int]:
@@ -74,7 +75,7 @@ def verify_heim_neuhauser_conjecture(max_k: int = 40, max_n: int = 250) -> Dict[
         fails_ge_26 = [n for n in exceptions if n >= 26]
         matches_E_infty = (exceptions == E_infty)
 
-        passed = (len(fails_ge_26) == 0) and matches_E_infty
+        passed = (not fails_ge_26) and matches_E_infty
         if not passed:
             all_conjecture_passed = False
 

@@ -5,14 +5,15 @@ over multiple iterations preceded by at least 5 discarded warmup runs.
 Zero precomputed lookup tables; strictly executing unadulterated workloads.
 """
 
-import time
-import statistics
 import os
+import statistics
 import sys
+import time
+
+from src.discriminant import compute_Dk
+from src.partition import compute_partitions_euler, compute_pk_recurrence, compute_pk_pentagonal_inversion
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from src.partition import compute_partitions_euler, compute_pk_recurrence, compute_pk_pentagonal_inversion
-from src.discriminant import compute_Dk
 
 
 def benchmark_function(name: str, fn, iterations: int = 15, warmup_runs: int = 5):
@@ -56,6 +57,9 @@ def benchmark_function(name: str, fn, iterations: int = 15, warmup_runs: int = 5
 
 
 def run_benchmarks():
+    """Worker function for benchmarks.
+    
+    """
     print("=== HIGH-RESOLUTION IN-PROCESS BENCHMARKS ===\n")
 
     # 1. Classical partition function p(n) up to n = 500
